@@ -1,0 +1,9 @@
+{
+  "name": "india-meet",
+  "version": "1.0.0",
+  "description": "indian video and voice call web application",
+  "main": "index.js",
+  "repository": "https://github.com/ayushmi173/india-meet",
+  "author": "ayush-mishra",
+  "license": "MIT"
+}
