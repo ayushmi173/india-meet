@@ -2,8 +2,22 @@
   "name": "india-meet",
   "version": "1.0.0",
   "description": "indian video and voice call web application",
+  "workspaces": [
+    "packages/*"
+  ],
   "main": "index.js",
+  "private": true,
   "repository": "https://github.com/ayushmi173/india-meet",
   "author": "ayush-mishra",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "sync": "yarn install --production=false && lerna bootstrap && yarn build",
+    "build": "yarn env lerna run build --parallel",
+    "env": "dotenv -e ${ENV_PATH:-.env} --",
+    "start:dev": "yarn env lerna exec 'yarn start:dev' --scope=@india-meet/{backend,ui} --stream"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^4.0.0",
+    "lerna": "^4.0.0"
+  }
 }
