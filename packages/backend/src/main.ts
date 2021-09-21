@@ -1,11 +1,15 @@
 import { NestFactory } from '@nestjs/core';
+import { ConfigService } from '@nestjs/config';
+
 import { AppModule } from './app.module';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const port = 4000;
   const app = await NestFactory.create(AppModule, { cors: true });
-  app.enableCors();
+  const service = app.get<ConfigService>(ConfigService);
+
+  const port: number = service.get('BACKEND_PORT');
   await app.listen(port);
-  console.log(`listening on port ${port}`);
+  Logger.log(`Backend is running on ${port}`);
 }
 bootstrap();
